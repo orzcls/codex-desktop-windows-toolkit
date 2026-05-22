@@ -1,0 +1,35 @@
+{
+  "project": "codex-desktop-windows-toolkit",
+  "features": [
+    {
+      "id": "goal-01",
+      "priority": 1,
+      "description": "Durable goal harness exists in project workspace.",
+      "file": ".codex-goals/windows-codex-desktop-toolkit/goal.md",
+      "steps": [
+        "Create goal.md",
+        "Create feature_list.json",
+        "Create progress.md",
+        "Create runbook.md"
+      ],
+      "passes": true,
+      "verification": "tests/run-tests.ps1 validates required files."
+    },
+    {
+      "id": "goal-02",
+      "priority": 2,
+      "description": "Repository is ready for GitHub publication with bilingual README and current screenshots.",
+      "file": "README.md",
+      "steps": [
+        "Create README and docs",
+        "Add bilingual README layout",
+        "Add latest screenshots",
+        "Create scripts and templates",
+        "Generate visual asset",
+        "Run validation"
+      ],
+      "passes": true,
+      "verification": "tests/run-tests.ps1 exits 0 and git status shows intended files."
+    }
+  ]
+}

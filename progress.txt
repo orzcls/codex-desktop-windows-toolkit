@@ -1,0 +1,30 @@
+2026-05-22 19:55 +08:00
+- Initialized Harness Engineering scaffold in C:\Users\admin\Desktop\test.
+- Created project-level task harness for Codex Desktop Windows Toolkit.
+- Started TDD with tests/run-tests.ps1; first run failed because tools/validate-project.ps1 was intentionally missing.
+
+2026-05-22 20:05 +08:00
+- Added README, AGENTS.md, release docs, Codex Browser/Computer Use/Goal guides, safe templates, and PowerShell tooling.
+- GPTGod model listing succeeded and confirmed gpt-image-2-vip was available; live image generation failed with RemoteDisconnected.
+- Created a deterministic local PNG hero at assets/readme/codex-windows-toolkit-hero-v2.png using the same Swiss-style infographic direction.
+- Ran tests/run-tests.ps1 successfully.
+
+2026-05-22 20:08 +08:00
+- Replaced generic scaffold architecture content with Codex Desktop Windows Toolkit-specific docs.
+- Added package-release.ps1 coverage to tests/run-tests.ps1 after finding a PowerShell default-parameter and path-exclusion bug.
+- Fixed package-release.ps1 and verified both test packaging and default dist packaging.
+- Initialized Git repository on branch main.
+
+2026-05-23 02:25 +08:00
+- Added bilingual README layout: Chinese `README.md` plus English `README.en.md`.
+- Added the latest feature screenshots from `images/` into both README files.
+- Updated validation to support Markdown and HTML image tags across both READMEs.
+- Removed historical release zips and redundant intermediate artifacts; kept one current release package in `dist/`.
+- Verified with `tools/validate-project.ps1`, `tests/run-tests.ps1`, and `tools/package-release.ps1`.
+
+2026-05-23 02:55 +08:00
+- Re-ran project validation and tests after the README/image updates.
+- Removed the test package and old release zip; final packaging is regenerated after this log entry so the zip includes the latest project state.
+- Opened README content in Typora using temporary same-directory review copies to avoid saving Typora's stale unsaved buffer.
+- Visually checked the Chinese hero image, screenshot gallery, and English README hero rendering; no broken image or layout overlap was observed in the rendered review copies.
+- Deleted the temporary Typora review files and confirmed no stale visual-check files remain in the repository.

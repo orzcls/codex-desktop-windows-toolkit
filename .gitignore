@@ -1,0 +1,24 @@
+.DS_Store
+Thumbs.db
+
+# Local runtime exports and generated packages
+artifacts/
+dist/
+release/
+*.zip
+
+# Local secrets and browser/session state
+.env
+.env.*
+*.local.*
+*auth*.json
+*state*.json
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Tool caches
+node_modules/
+.pytest_cache/
+__pycache__/
+

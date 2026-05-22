@@ -1,0 +1,107 @@
+{
+  "project": "codex-desktop-windows-toolkit",
+  "description": "Package Windows Codex Desktop compatibility fixes for Computer Use, Browser, and durable /goal workflows.",
+  "features": [
+    {
+      "id": "feat-01",
+      "category": "foundation",
+      "priority": 1,
+      "description": "Create durable project and goal harness files.",
+      "file": ".codex-goals/windows-codex-desktop-toolkit/goal.md",
+      "steps": [
+        "Create goal.md with objective, constraints, and verification criteria.",
+        "Create feature_list.json and progress logs.",
+        "Create init.ps1 for quick context recovery."
+      ],
+      "passes": true,
+      "verification": "tests/run-tests.ps1 confirms required harness files exist and parse."
+    },
+    {
+      "id": "feat-02",
+      "category": "tooling",
+      "priority": 2,
+      "description": "Add safe Windows PowerShell tooling for export, validation, and release packaging.",
+      "file": "tools/validate-project.ps1",
+      "steps": [
+        "Add project validator with required-file and secret checks.",
+        "Add local Codex asset exporter with redaction.",
+        "Add dry-run installer and release packager scripts."
+      ],
+      "passes": true,
+      "verification": "powershell -NoProfile -ExecutionPolicy Bypass -File tests/run-tests.ps1 exits 0."
+    },
+    {
+      "id": "feat-03",
+      "category": "documentation",
+      "priority": 3,
+      "description": "Document Computer Use, Browser, /goal, security, and release workflows.",
+      "file": "docs/browser-runtime.md",
+      "steps": [
+        "Write Browser runtime guide for bundled Browser, Chrome/CDP, and agent-browser fallback.",
+        "Write Computer Use Windows guide.",
+        "Write Goal Mode fallback and release checklist."
+      ],
+      "passes": true,
+      "verification": "README links and docs paths are present; validator exits 0."
+    },
+    {
+      "id": "feat-04",
+      "category": "visuals",
+      "priority": 4,
+      "description": "Create README visual asset and wire it into the project.",
+      "file": "assets/readme/codex-windows-toolkit-hero-v2.png",
+      "steps": [
+        "Compile a GPT-Image2/GPTGod prompt using the infographic template family.",
+        "Generate or fallback-create a README hero image.",
+        "Verify README image path resolves."
+      ],
+      "passes": true,
+      "verification": "tests/run-tests.ps1 confirms README image references exist."
+    },
+    {
+      "id": "feat-05",
+      "category": "documentation",
+      "priority": 5,
+      "description": "Rewrite README in Chinese and add an English companion README with richer evidence and visuals.",
+      "file": "README.md",
+      "steps": [
+        "Extract the WeChat article content now available from the opened browser URL.",
+        "Create docs/research/wechat-qoder-computer-use.md with source summary and project implications.",
+        "Rewrite README using Chinese headings and prose, preserving product names as proper nouns only.",
+        "Add an English README companion with mirrored structure.",
+        "Show the latest screenshots from images/."
+      ],
+      "passes": true,
+      "verification": "validate-project.ps1 confirms bilingual README layout, local screenshots, and required research notes."
+    },
+    {
+      "id": "feat-06",
+      "category": "visuals",
+      "priority": 6,
+      "description": "Generate and wire multiple README architecture images through GPTGod.",
+      "file": "assets/readme/runtime-decision-flow.png",
+      "steps": [
+        "Delegate GPTGod generation to a sub-agent and wait for remote completion.",
+        "Add at least two architecture/principle images to assets/readme.",
+        "Reference at least three local images from README.",
+        "Keep the latest hero image and architecture diagrams in the repo."
+      ],
+      "passes": true,
+      "verification": "validate-project.ps1 requires at least three README image references and checks they exist."
+    },
+    {
+      "id": "feat-07",
+      "category": "release",
+      "priority": 7,
+      "description": "Run self-review and prepare repository for GitHub upload.",
+      "file": "docs/release-checklist.md",
+      "steps": [
+        "Run validation and package release.",
+        "Run a review pass for language consistency, image links, and secret leakage.",
+        "Report Git status and next publish command."
+      ],
+      "passes": true,
+      "verification": "tests/run-tests.ps1 and package-release.ps1 exit 0; git status shows only intended tracked files."
+    }
+  ]
+}

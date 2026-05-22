@@ -1,0 +1,33 @@
+# Codex Desktop Windows template.
+# Copy snippets into your private %USERPROFILE%\.codex\config.toml after review.
+# Do not place live keys in this tracked template.
+
+[features]
+builtin_mcp = true
+goals = true
+plan_tool = true
+rmcp_client = true
+view_image_tool = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[mcp_servers.Fetch]
+command = "cmd"
+args = ["/c", "uvx", "mcp-server-fetch"]
+env = { APPDATA = "C:\\Users\\<YOU>\\AppData\\Roaming", LOCALAPPDATA = "C:\\Users\\<YOU>\\AppData\\Local", NODE_OPTIONS = "--dns-result-order=ipv4first" }
+
+[mcp_servers.PlaywrightMCP]
+command = "cmd"
+args = ["/c", "npx", "-y", "@playwright/mcp@latest"]
+env = { APPDATA = "C:\\Users\\<YOU>\\AppData\\Roaming", LOCALAPPDATA = "C:\\Users\\<YOU>\\AppData\\Local", NODE_OPTIONS = "--dns-result-order=ipv4first" }
+

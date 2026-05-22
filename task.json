@@ -1,0 +1,17 @@
+{
+  "project": "codex-desktop-windows-toolkit",
+  "type": "developer-toolkit",
+  "targetWorkspace": "C:\\Users\\admin\\Desktop\\test",
+  "createdAt": "2026-05-22T19:55:00+08:00",
+  "rules": [
+    "Do not commit live secrets or raw Codex runtime databases.",
+    "Keep exported local state in gitignored artifacts/.",
+    "Run tests/run-tests.ps1 before release claims.",
+    "Update progress.txt and .codex-goals progress after verified changes."
+  ],
+  "verification": [
+    "powershell -NoProfile -ExecutionPolicy Bypass -File tests/run-tests.ps1",
+    "git status --short"
+  ]
+}
+

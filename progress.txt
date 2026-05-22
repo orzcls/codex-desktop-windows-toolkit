@@ -28,3 +28,9 @@
 - Opened README content in Typora using temporary same-directory review copies to avoid saving Typora's stale unsaved buffer.
 - Visually checked the Chinese hero image, screenshot gallery, and English README hero rendering; no broken image or layout overlap was observed in the rendered review copies.
 - Deleted the temporary Typora review files and confirmed no stale visual-check files remain in the repository.
+
+2026-05-23 04:20 +08:00
+- Synced the Chrome plugin `node_repl` MCP fix into the public toolkit as a redacted config template and reusable launcher script.
+- Updated the installer to render local `%USERPROFILE%` paths and copy `scripts/start-openai-bundled-node-repl.ps1` into the target Codex home.
+- Removed README process-style security boundary sections from both Chinese and English READMEs.
+- Verified with `tools/validate-project.ps1`, `tests/run-tests.ps1`, installer dry-run/temp install, script parsing, direct `node_repl` launcher smoke test, and `tools/package-release.ps1`.

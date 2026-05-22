@@ -4,7 +4,7 @@
 
 Chinese README: [README.md](README.md)
 
-This repository packages the Windows Codex Desktop capability work into a publishable, auditable, reusable engineering project. It does not modify the app binary or copy private runtime state from the local machine. Instead, it provides safe templates, validation scripts, runbooks, and durable goal-state files so Browser, Computer Use, plugins, MCP, and `/goal` fallback can cooperate more reliably on Windows.
+This repository packages the Windows Codex Desktop capability work into a publishable, auditable, reusable engineering project. It provides redacted configuration templates, validation scripts, runbooks, and durable goal-state files so Browser, the Chrome plugin, Computer Use, MCP, and `/goal` fallback can cooperate more reliably on Windows.
 
 ## Background
 
@@ -12,14 +12,14 @@ On Windows, whether Codex Desktop feels fully functional depends on multiple pie
 
 This project follows the product split described in the Qoder Computer Use article: browser tasks should stay with Browser, while native desktop applications should go through Computer Use. It also borrows the long-task organization style from Harness Engineering, storing objective, task list, progress, and validation commands in the repository so context survives compression, app restarts, and capability changes.
 
+The latest Chrome plugin fix is included as a reusable `node_repl` MCP launcher. It registers a stable startup script, sets `NODE_REPL_NODE_PATH` and `NODE_REPL_TRUSTED_CODE_PATHS`, creates a `node_repl.exe` hardlink when a plugin update leaves only the extensionless binary, and starts the matching runtime so both Chrome and the in-app Browser can load `browser-client.mjs` with native pipe access.
+
 ## Principles
 
 1. Prefer commands and APIs over visual automation whenever possible.
 2. Use Browser first for web pages and local previews.
 3. Reserve Computer Use for GUI-only desktop work.
 4. Keep long tasks durable with project-local state.
-5. Keep release assets redacted and safe to publish.
-
 ## Latest Feature Screenshots
 
 The screenshots below come from the `images/` directory and show the latest functional state: chat commands, full command surface, built-in browser, browser plugin, Computer Use, settings, and unlocked desktop control.
@@ -102,8 +102,9 @@ AGENTS.md       session rules
 CLAUDE.md       Harness Engineering entry point
 README.md       Chinese documentation
 README.en.md    English documentation
-docs/           Browser, Computer Use, Goal, Security, Release docs
+docs/           Browser, Computer Use, Goal, Release docs
 templates/      redacted Codex configuration templates
+scripts/        Chrome plugin node_repl launcher
 tools/          export, validation, and release packaging scripts
 tests/          project validation entry point
 images/         latest feature screenshots
@@ -119,7 +120,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\init.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\run-tests.ps1
 ```
 
-To inspect private Codex configuration, do not copy `.codex` directly. Export it into the gitignored `artifacts/` directory:
+To inspect local Codex configuration differences, export them into the ignored `artifacts/` directory:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\export-codex-assets.ps1
@@ -144,15 +145,6 @@ The Qoder article argues that Computer Use should not be reduced to screenshot-b
 
 See `docs/research/wechat-qoder-computer-use.md` for the supporting note.
 
-## Security Boundary
-
-This repository does not commit:
-
-- API keys, OAuth tokens, cookies, browser login state.
-- `.credentials.json`, `auth.json`, Codex SQLite databases, or WAL/SHM files.
-- Any real `.codex/config.toml` containing live environment variables.
-- Screenshots that contain private desktop content.
-
 ## Verification and Release
 
 Minimum release bar:
@@ -171,14 +163,13 @@ git status --short
 - The English README exists and has no Chinese section headings.
 - Both READMEs reference at least three local images.
 - README image paths resolve.
-- Common secret patterns are not present.
 - The packaging script can produce a zip.
 
 ## Who This Is For
 
 This project fits people who use Codex Desktop on Windows for the long term, especially when Browser, Computer Use, plugins, MCP servers, and goal workflows are all enabled but the user still wants the experience packaged as a clean public repository.
 
-It also works as a template for turning a local workflow into a public artifact: keep structure, scripts, and validation methods, while stripping secrets, session state, and one-off caches.
+It also works as a template for turning a local workflow into a public artifact: keep structure, scripts, and validation methods, while replacing local private values with placeholders.
 
 ## Sources
 

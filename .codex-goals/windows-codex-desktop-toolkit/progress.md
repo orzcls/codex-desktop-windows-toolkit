@@ -36,3 +36,10 @@
 - Used Typora for visual review through temporary same-directory README copies, because Typora's direct `README.md` window was an unsaved stale buffer.
 - Confirmed the Chinese README hero, screenshot gallery, and English README hero render correctly in Typora review copies.
 - Removed temporary visual-check files before final verification.
+
+## 2026-05-23 04:20 +08:00
+
+- Added the Chrome plugin `node_repl` MCP update to the toolkit template and launcher script.
+- Updated `tools/install-codex-config.ps1` to install the launcher and render local user paths.
+- Removed process-style security boundary sections from both READMEs.
+- Verification passed: `tools/validate-project.ps1`, `tests/run-tests.ps1`, installer dry-run/temp install, script parsing, direct `node_repl` launcher smoke test, and `tools/package-release.ps1`.

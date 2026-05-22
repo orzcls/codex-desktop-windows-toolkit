@@ -21,6 +21,21 @@ enabled = true
 [plugins."superpowers@openai-curated"]
 enabled = true
 
+[mcp_servers.node_repl]
+type = "stdio"
+command = "powershell"
+args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\<YOU>\\.codex\\scripts\\start-openai-bundled-node-repl.ps1"]
+startup_timeout_ms = 180000
+
+[mcp_servers.node_repl.env]
+APPDATA = "C:\\Users\\<YOU>\\AppData\\Roaming"
+HOME = "C:\\Users\\<YOU>"
+LOCALAPPDATA = "C:\\Users\\<YOU>\\AppData\\Local"
+NODE_OPTIONS = "--dns-result-order=ipv4first"
+NODE_REPL_NODE_PATH = "C:\\Users\\<YOU>\\.codex\\plugins\\cache\\openai-bundled\\chrome\\latest\\app-server-runtime\\node"
+NODE_REPL_TRUSTED_CODE_PATHS = "C:\\Users\\<YOU>\\.codex\\plugins\\cache\\openai-bundled\\chrome\\latest\\scripts;C:\\Users\\<YOU>\\.codex\\plugins\\cache\\openai-bundled\\browser\\latest\\scripts"
+SystemRoot = "C:\\Windows"
+
 [mcp_servers.Fetch]
 command = "cmd"
 args = ["/c", "uvx", "mcp-server-fetch"]
@@ -30,4 +45,3 @@ env = { APPDATA = "C:\\Users\\<YOU>\\AppData\\Roaming", LOCALAPPDATA = "C:\\User
 command = "cmd"
 args = ["/c", "npx", "-y", "@playwright/mcp@latest"]
 env = { APPDATA = "C:\\Users\\<YOU>\\AppData\\Roaming", LOCALAPPDATA = "C:\\Users\\<YOU>\\AppData\\Local", NODE_OPTIONS = "--dns-result-order=ipv4first" }
-

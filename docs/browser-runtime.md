@@ -22,6 +22,7 @@ The Qoder-style reference surface is `agent-browser`, a CDP-backed CLI with pers
 - Plugin cache exists but Codex cannot resolve the bundled script path.
 - Chrome remote debugging port is running, but the authorization handshake times out.
 - Shell quoting corrupts JavaScript passed to browser eval commands.
+- The Chrome plugin updates, but the MCP entry still points at an older `node_repl.exe`.
 
 ## Practical Checks
 
@@ -33,3 +34,19 @@ Get-Content "$env:USERPROFILE\.codex\browser\config.toml"
 
 For CDP/browser automation, prefer base64 or stdin for complex JavaScript snippets instead of deeply nested shell quoting.
 
+## Chrome Plugin Node REPL Launcher
+
+Recent Chrome plugin builds ship the runtime under:
+
+```text
+%USERPROFILE%\.codex\plugins\cache\openai-bundled\chrome\latest\app-server-runtime
+```
+
+The project template registers `mcp_servers.node_repl` through `scripts/start-openai-bundled-node-repl.ps1`. The launcher follows the `latest` plugin junction, checks whether `node_repl.exe` exists, creates a hardlink to the extensionless `node_repl` binary when needed, and starts the matching runtime with `--disable-sandbox`.
+
+The matching template also sets:
+
+- `NODE_REPL_NODE_PATH` to the bundled Chrome runtime node executable.
+- `NODE_REPL_TRUSTED_CODE_PATHS` to the bundled Chrome and in-app Browser script directories.
+
+That combination lets `browser-client.mjs` load with native pipe access after a plugin update. If the current Codex thread was already running before the config was changed, restart Codex Desktop and open a new thread so the MCP tool table can be rebuilt.

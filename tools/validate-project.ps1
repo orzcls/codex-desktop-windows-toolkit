@@ -43,6 +43,7 @@ $required = @(
   "templates/config.codex.toml",
   "templates/browser.config.toml",
   "templates/computer-use.config.json",
+  "scripts/start-openai-bundled-node-repl.ps1",
   "tools/export-codex-assets.ps1",
   "tools/install-codex-config.ps1",
   "tools/package-release.ps1"
